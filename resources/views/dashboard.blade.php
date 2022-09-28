@@ -119,7 +119,7 @@
                         "labels": [{{ implode(",", $vehicleYears) }}],
                         "datasets": [{
                             "label": "Vehicles Density",
-                            "data": [{{ implode(",", $vehicleTimes) }}],
+                            "data": [0, {{ implode(",", $vehicleTimes) }}],
                             // "fill": false,
                             "borderColor": "rgb(75, 192, 192)",
                             // "lineTension": 0.1
@@ -138,7 +138,7 @@
         <h5 class="font-bold uppercase text-gray-600">Undept Vehicles</h5>
     </div>
     <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-        <table class="min-w-full mb-2">
+        <table id="undeptVehicleTable" class="min-w-full mb-2">
             <thead>
                 <tr>
                     {{-- <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Vehicle Type</th> --}}
@@ -163,7 +163,7 @@
                     </tr>
                 @else
                     @foreach ($undeptVehicles as $key => $vehicle)
-                    <tr>
+                    <tr class="tbody">
 
                         {{-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div class="text-sm leading-5 text-gray-500">{{ $vehicle->vehicle_type }}</div>
@@ -231,6 +231,17 @@
 
 @section('script')
 
+<script>
 
+    $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#undeptVehicleTable tr.tbody").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+</script>
 
 @endsection

@@ -13,7 +13,7 @@
     {{-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/> --}}
     <script src="https://cdn-tailwindcss.vercel.app/"></script>
     <!--Replace with your tailwind.css once created-->
-
+    <link rel="icon" href="{{ asset('favicon-32x32.png') }}" type="image/png">
 
     @yield('head')
 

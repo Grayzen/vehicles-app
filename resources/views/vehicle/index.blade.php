@@ -18,7 +18,7 @@
                 <h5 class="font-bold uppercase text-gray-600 pl-2 mb-2">Vehicles</h5>
             </div>
             <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-                <table class="min-w-full mb-2">
+                <table id="vehicleTable" class="min-w-full mb-2">
                     <thead>
                         <tr>
                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Employee Name</th>
@@ -44,7 +44,7 @@
                             </tr>
                         @else
                             @foreach ($vehicles as $key => $vehicle)
-                            <tr>
+                            <tr class="tbody">
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     <div class="flex items-center">
 
@@ -142,6 +142,16 @@
 @endif
 
 <script>
+
+    $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#vehicleTable tr.tbody").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
     $(".delete_button").click(function(e) {
         e.preventDefault();
         let vehicle = $(this).data("delete");

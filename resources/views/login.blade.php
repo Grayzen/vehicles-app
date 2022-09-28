@@ -21,9 +21,12 @@
             bg-white rounded-lg shadow-md lg:shadow-lg">
 
             <!-- Card Title -->
-            <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800">
-                Login
+            <h2 class="text-center font-semibold text-3xl lg:text-4xl pb-5 text-gray-800">
+                Admin Panel
             </h2>
+            <h6 class="text-center font-semibold mt-3 text-gray-800">
+                Username: admin@abc.com & Password: 123456
+            </h6>
 
             @if ($errors->any())
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-5" role="alert">
@@ -47,7 +50,7 @@
                     text-gray-800 appearance-none
                     border-b-2 border-gray-100
                     focus:text-gray-500 focus:outline-none focus:border-gray-200"
-                    required />
+                    required value="admin@abc.com" />
 
                 <!-- Password Input -->
                 <label for="password" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Password</label>
@@ -56,19 +59,19 @@
                     text-gray-800 appearance-none
                     border-b-2 border-gray-100
                     focus:text-gray-500 focus:outline-none focus:border-gray-200"
-                    required />
+                    required value="123456" />
 
                 <!-- Auth Buttton -->
                 <button type="submit"
                     class="w-full py-3 mt-10 bg-gray-800 rounded-sm
                     font-medium text-white uppercase
                     focus:outline-none hover:bg-gray-700 hover:shadow-none">
-                    Login
+                    Log in
                 </button>
 
                 <!-- Another Auth Routes -->
                 <div class="sm:flex sm:flex-wrap mt-8 sm:mb-4 text-sm text-center">
-                    <a href="forgot-password" class="flex-2 underline">
+                    {{-- <a href="forgot-password" class="flex-2 underline">
                         Forgot password?
                     </a>
 
@@ -78,7 +81,7 @@
 
                     <a href="{{ route('register') }}" class="flex-2 underline">
                         Create an Account
-                    </a>
+                    </a> --}}
                 </div>
             </form>
         </div>
